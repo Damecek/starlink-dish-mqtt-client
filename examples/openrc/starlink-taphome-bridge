@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+command="/usr/bin/uvx"
+command_args="starlink-taphome-bridge run --daemon --interval 10 --mqtt-host 192.168.1.10"
+command_background="yes"
+pidfile="/run/starlink-taphome-bridge.pid"
+
+start_pre() {
+  checkpath --file --mode 0644 "$pidfile"
+}
+
+respawn_delay=5
+respawn_max=0

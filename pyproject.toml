@@ -1,0 +1,35 @@
+[project]
+name = "starlink-taphome-bridge"
+version = "0.1.0"
+description = "Starlink Dish telemetry/control bridge to TapHome via MQTT."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Starlink TapHome Bridge" }]
+dependencies = [
+  "click>=8.1",
+  "gmqtt>=0.6.16",
+  "starlink-grpc-tools>=1.0.0",
+]
+
+[project.scripts]
+starlink-taphome-bridge = "starlink_taphome_bridge.cli:main"
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.6.0",
+]
+
+[tool.ruff]
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["starlink_taphome_bridge"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
