@@ -1,4 +1,5 @@
 # Repository Guidelines
+This is a living document. Update it as the project evolves and new workflows, constraints, or conventions emerge.
 
 ## Project Structure & Module Organization
 - Source code lives in `src/starlink_taphome_bridge/`.
