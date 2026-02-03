@@ -105,6 +105,20 @@ starlink-taphome-bridge run \
 
 ## Development Notes
 
+- If you want to run the CLI from this repo using `uv` (and the entrypoint in
+  `pyproject.toml`), install the project into the local venv first:
+
+```sh
+uv sync
+uv run starlink-taphome-bridge run --help
+```
+
+- For a one-off run without syncing, you can install the project editably just for the command:
+
+```sh
+uv run --with-editable . starlink-taphome-bridge run --help
+```
+
 - The Starlink integration requires the `starlink-client` Python package (local gRPC access).
   The default dependency is `starlink-client` in `pyproject.toml`. If you use a GitHub fork
   instead, replace the dependency with a direct git URL that provides the `starlink_client`
