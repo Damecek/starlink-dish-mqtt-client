@@ -11,10 +11,11 @@ This is a living document. Update it as the project evolves and new workflows, c
 - Run the CLI locally (installed):
   - `starlink-taphome-bridge run --help` to view options.
 - Run without installing (module entrypoint):
-  - `python -m starlink_taphome_bridge.cli run --once --mqtt-host 192.168.1.10`.
+  - `PYTHONPATH=src python -m starlink_taphome_bridge.cli run --once --mqtt-host 192.168.1.10`.
 - Alpine/uvx usage (from README):
   - `uvx starlink-taphome-bridge run --once --mqtt-host 192.168.1.10`.
-- If you use `uv` for local development, keep it simple and follow the README’s `uvx` examples; the CLI is the supported entrypoint.
+- If you use `uv` for local development, the module entrypoint works without installation:
+  - `PYTHONPATH=src uv run python -m starlink_taphome_bridge.cli run --help`.
 - There is no build step beyond standard Python packaging (see `pyproject.toml`).
 
 ## Coding Style & Naming Conventions
@@ -36,5 +37,6 @@ This is a living document. Update it as the project evolves and new workflows, c
   - Example command(s) to validate the change.
 
 ## Configuration & Safety Notes
-- Configuration is CLI-driven (see `--mqtt-host`, `--topic-prefix`, and `--interval`). Avoid hardcoding secrets.
-- MQTT topics and retained message behavior are documented in `README.md` and should remain backward compatible.
+- Configuration is CLI-driven (see `--mqtt-host`, `--topic-prefix`, `--interval`, and `--field`). Avoid hardcoding secrets.
+- MQTT topics and retained message behavior are documented in `README.md` and follow gRPC field names.
+- Starlink integration depends on the `starlink_client` package; ensure the dependency provides that import.
